@@ -5,7 +5,7 @@ verison: [1.2.0]
 
 <h2>🪛Installation Tool🪛:</h2>
 
-<p>1. To install HashBrew use:</p>
+<p>1. To install HashBrew use this command in your terminal:</p>
 
 ```
 git clone https://github.com/PuppyStudios1/HashBrew.git
