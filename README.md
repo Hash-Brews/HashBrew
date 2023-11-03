@@ -7,6 +7,13 @@ HashBrew is a Compact Place where you can make Packages, or install them, using 
 
 <p>1. To install HashBrew use this command in your terminal:</p>
 
+2. Run the ``Install_Hash.sh`` file to run the Package manager
+
 ```
 git clone https://github.com/PuppyStudios1/HashBrew.git
+```
+<P>3. to unistall HashBrew run the following:</P>
+
+```
+git rm -rf HashBrew
 ```
