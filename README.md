@@ -1,7 +1,6 @@
 # HashBrew
-HashBrew is a Compact Place where you can make Packages, or install them, using python, javascirpt and more!
 
-verison: [1.2.0]
+HashBrew is a Compact Place where you can make Packages, or install them, using python, javascirpt and more!
 
 <h2>🪛Installation Tool🪛:</h2>
 
