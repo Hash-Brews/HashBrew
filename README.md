@@ -3,8 +3,7 @@ HashBrew is a Compact Place where you can make Packages, or install them, using 
 
 verison: [1.2.0]
 
-<h2>'''diff ! #
- Installation Steps:</h2>
+<h2>🪛Installation Tool🪛:</h2>
 
 <p>1. To install HashBrew use:</p>
 
