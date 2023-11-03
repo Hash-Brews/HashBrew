@@ -15,5 +15,5 @@ git clone https://github.com/PuppyStudios1/HashBrew.git
 <P>3. to unistall HashBrew run the following:</P>
 
 ```
-git rm -rf HashBrew
+rm -rf "path/to/HashBrew"
 ```
