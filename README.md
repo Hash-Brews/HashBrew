@@ -23,6 +23,7 @@ rm -rf "path/to/HashBrew"
 🪛Installation For linux🪛
 
 (A clear Guide on Installing on Linux Distros is given in https://github.com/PuppyStudios1/HashBrew/releases)
+
 to Install HashLinux, First use 
 ```
 cd HashLinux
