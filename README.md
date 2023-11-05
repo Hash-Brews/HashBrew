@@ -17,3 +17,6 @@ git clone https://github.com/PuppyStudios1/HashBrew.git
 ```
 rm -rf "path/to/HashBrew"
 ```
+
+<h3>🪛Installation For linux🪛</h3>
+
