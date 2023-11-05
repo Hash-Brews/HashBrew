@@ -1,5 +1,5 @@
 # HashBrew
-[![.github/workflows/main.yml](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)](https://github.com/github/docs/actions/workflows/main.yml)
+[![HashBrew](https://github.com/PuppyStudios1/HashBrew/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/PuppyStudios1/HashBrew/actions/workflows/main.yml)
 
 HashBrew is a Compact Place where you can make Packages, or install them, using python, javascirpt and more!
 
