@@ -18,5 +18,15 @@ git clone https://github.com/PuppyStudios1/HashBrew.git
 rm -rf "path/to/HashBrew"
 ```
 
-<h3>🪛Installation For linux🪛</h3>
+🪛Installation For linux🪛
 
+(A clear Guide on Installing on Linux Distros is given in https://github.com/PuppyStudios1/HashBrew/releases)
+to Install HashLinux, First use 
+```
+cd HashLinux
+```
+to go to the folder, and then use 
+```
+source Install_Hash.sh
+```
+and HashBrew Should Run
