@@ -8,4 +8,8 @@ HashBrew is a Compact Place where you can make Packages, or install them, using 
 <h2>All installation Guides are Located At the Release Tab</h2>
 
 <h2>Command Line Installation</h2>
-to install at command line, use ''
+to install at command line, use
+
+''
+Git clone https://github.com/Hash-Brews/HashBrew.git
+''
