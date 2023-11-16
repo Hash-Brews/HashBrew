@@ -6,3 +6,6 @@
 HashBrew is a Compact Place where you can make Packages, or install them, using python, javascirpt and more!
 
 <h2>All installation Guides are Located At the Release Tab</h2>
+
+<h2>Command Line Installation</h2>
+to install at command line, use ''
