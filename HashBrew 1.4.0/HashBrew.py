@@ -13,35 +13,43 @@ email = ""
 pkgname = ""
 pkgcontent = ""
 locate = ""
+download_url = ""
+filename = ""
+github = Github()
+repo = github.get_repo(original_repo_url)
+
 # Before Defines
-def find_and_clone_file(repo_url, filename):
-  """
-  Searches a GitHub repository for a specific file and clones it.
+def find_and_clone_file(original_repo_url, pkg, filename):
+    
+    """
+    Searches a GitHub repository for a specific file within a given folder and clones it.
 
-  Args:
-    repo_url: The URL of the GitHub repository.
-    filename: The name of the file to search for.
-  """
+    Args:
+        repo_url: The URL of the GitHub repository.
+        pkg: The name of the folder to search within.
+        filename: The name of the file to download.
+    """
+    repo = github.get_repo(original_repo_url)
 
-  # Get the GitHub repository object.
-  github = Github()
-  repo = github.get_repo(repo_url)
+    def recursive_search(pkgname):
+        contents = repo.get_contents(pkgname)
+        for content in contents:
+            if content.type == "dir":
+                recursive_search(repo.get_contents(content.path))
+            elif content.name == filename:
+                download_url = content.download_url
+                os.system(f"curl -L {download_url} -o {filename}")
+                print(f"File '{filename}' downloaded from folder '{pkg}' successfully.")
+                return  # Exit the search once the file is found
 
-  # Search for the file.
-  for content in repo.get_contents(""):
-    if content.name == filename:
-      # If the file is found, clone it.
-      download_url = content.download_url
-      os.system(f"curl -L {download_url} -o {filename}")
-      print(f"File '{filename}' downloaded successfully.")
-      return
-
-  # If the file is not found, raise an error.
-  raise FileNotFoundError(f"File '{filename}' not found in repository.")
+        recursive_search(repo.get_contents(""))
+        return
+    # If the file is not found, raise an error.
+    raise FileNotFoundError(f"File '{filename}' not found in repository.")
 
 # Program starts here!
 print("\n Welcome to HashBrew! v1.1 \n")
-print("HashBrew Package Manager Enviroment (HPME)")
+print("HashBrew Package Enviroment (HPE)")
 print("Loading enviroment... \n")
 time.sleep(3)
 
@@ -52,79 +60,54 @@ if __name__ == "__main__":          # <- Hash engine
         if inp == "Hash":
             print("`Hash` command used externaly.")
 
-        if inp == "Hash Intergrate":
-            interg = input("Enter Intergration ID: ")
-
+        # if inp == "Hash Intergrate":
+        #     interg = input("Enter Intergration ID: ")     <-- beta
         if inp == "Hash.Brewer":
             pkgname = input("Enter Package name: ")
-            pkgcontent = input("Enter contents: ")
-
-            with open(os.path.join(os.getcwd(), pkgname), "w") as f:
-                f.write(pkgcontent)
-
-            print(f"Created package: {pkgname}")
-
-            # Clone the original repository
-            os.system(f"git clone {original_repo_url}")
-
-            # Move to the cloned repository
-            os.chdir(os.path.join(os.getcwd(), "original_repo_name"))
-
-            # Create a new branch for your changes
-            branchname = input("what would you like for your branch name?: ")
-            os.system(f"git checkout -b " + branchname)
-
-            # Copy the created package to the appropriate location
-            os.system(f"cp ../{pkgname} .")
-
-            # Add the copied file to staging area
-            os.system(f"git add {pkgname}")
-
-            email = input("Enter your email for the commit: ")
-            name = input ("enter your name for the commit: ")
-            # Set your email and name for commit
-            os.system("git config --global user.email "+ email)
-            os.system("git config --global user.name "+ name)
-
-            # Commit the changes with a message
-            os.system(f"git commit -m 'Added {pkgname} to your branch'")
-
-            # Push the changes to your forked repository
-            os.system("git remote add fork https://github.com/PuppyStudios1/HashBrew-Cloud.git")
-            os.system("git push -u fork "+ branchname)
-
-            print(f"Package pushed to your forked repository: https://github.com/PuppyStudios1/HashBrew-Cloud.git")
-
-            def generate_unique_random_number_string(num_digits):
-                # Generate a random number with the specified number of digits.
-                random_number = random.randint(10**(num_digits-1), 10**num_digits-1)
-                # Convert the random number to a string and return it.
-                random_number_string = str(random_number)
-                # Check if the random number string is unique and has the correct number of digits.
-                if len(random_number_string) == num_digits:
-                    return random_number_string
-
-            # Generate a unique random number string with 5 digits.
-            unique_number_string = generate_unique_random_number_string(5)
             
-            generate_unique_random_number_string
+            pkglanguage = input("package programming language: ")
+            txtinf = input("Use nano or vim to make file? (call file main.[language name]): ")
+            
+            repo = "https://github.com/PuppyStudios1/HashBrew-Cloud.git"
 
-            print ("Your Package ID is: "+ unique_number_string)
+            # Create the package directory
+            os.makedirs(pkgname)
+
+            # Create the main file
+            with open(os.path.join(pkgname, f"main.{pkglanguage}"), "w") as f:
+                # Write some initial code to the file (if desired)
+                pass  # You can add initial code here if needed
+
+            # Allow the user to edit the file using their preferred editor
+            if txtinf == "nano":
+                os.system(f"nano {pkgname}/main.{pkglanguage}")
+            elif txtinf == "vim":
+                os.system(f"vi {pkgname}/main.{pkglanguage}")
+
+            # Add the package directory to the git repository
+            os.chdir(pkgname)
+            os.system("git init")
+            os.system("git add .")
+            os.system(f"git commit -m 'Initial commit'")
+            os.system(f"git remote add origin {repo}")
+            os.system("git push -u origin master")
+
+            print(f"Package '{pkgname}' created and pushed to HashBrew Cloud")
+            print(f"Package pushed to hashbrew cloud to get verified.")
 
         if inp == "clear":
             os.system("clear")
 
-        if inp == "Hash inst pkgutil":
+        if inp == "Hash install pkgutil":
             locate = input ("input cloud pkg directory: ")
             os.system("git clone https://github.com/PuppyStudios1/HashBrew-Cloud.git "+ locate)
 
         if inp == "Hash install":
-            pkginstall = input("what to install?: ")
-
             try:
-                find_and_clone_file(original_repo_url, pkginstall)
+                pkgname = input("Folder name? (package name): ")
+                find_and_clone_file(original_repo_url, filename, download_url)
             except FileNotFoundError as e:
                 print(e)
 
         if inp == "Hash --Update":
-            os.system(f"python Update.py")
+            os.system("python Update.py")
