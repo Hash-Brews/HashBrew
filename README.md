@@ -11,7 +11,7 @@ HashBrew is a Compact Place where you can make Packages, or install them, using 
 to install at command line, use
 
 ```bash
-/bin/bash -c "(curl -fsSL https://raw.githubusercontent.com/Hash-Brews/Installer/main/Hash/Install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Hash-Brews/Installer/main/Hash/Install.sh)"
 ```
 
 
